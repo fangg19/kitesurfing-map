@@ -1,10 +1,14 @@
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from './containers/Login';
+import Dashboard from './containers/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <h1>KiteSurfing Map</h1>
-    </div>
+    <Router>
+      <Route exact path="/" component={Login} />
+      <Route path="/dashboard" component={Dashboard} />
+    </Router>
   );
 }
 
