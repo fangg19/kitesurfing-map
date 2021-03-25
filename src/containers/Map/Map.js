@@ -3,7 +3,13 @@ import classes from './Map.module.css';
 import GoogleMapReact from 'google-map-react';
 import SpotMarker from '../../components/UI/SpotMarker';
 
-const Map = ({ center, zoom }) => {
+const Map = ({ data, center, zoom }) => {
+  const spots = data.map((spot) => {
+    return <SpotMarker lat={spot.lat} lng={spot.long} />;
+  });
+
+  //to fix: spot-urile nu isi pastreaza locatia la zoom-in/zoom-out
+
   return (
     <div className={classes.Map}>
       <GoogleMapReact
@@ -11,7 +17,7 @@ const Map = ({ center, zoom }) => {
         defaultCenter={center}
         defaultZoom={zoom}
       >
-        <SpotMarker lat={center.lat} lng={center.lng} />
+        {spots}
       </GoogleMapReact>
     </div>
   );

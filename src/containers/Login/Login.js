@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <div className={classes.Login}>
       <p>
-        Go to <NavLink to="/dashboard">dashboard</NavLink>
+        Go to <NavLink to="/dashboard">Dashboard.</NavLink>
       </p>
     </div>
   );

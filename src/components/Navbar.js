@@ -7,6 +7,7 @@ const Navbar = () => {
     <header className={classes.Navbar}>
       <h2>Kite</h2>
       <img src={UserIcon} alt="user-profile" />
+      {/* add the "add spot" btn */}
     </header>
   );
 };
