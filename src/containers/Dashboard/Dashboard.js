@@ -3,6 +3,7 @@ import axios from 'axios';
 import classes from './Dashboard.module.css';
 import Navbar from '../../components/Navbar';
 import Map from '../Map/Map';
+import Table from '../Table/Table';
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
@@ -31,6 +32,7 @@ const Dashboard = () => {
       ) : (
         <Map data={data} />
       )}
+      <Table data={data} />
     </div>
   );
 };
