@@ -1,8 +1,36 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80vw;
+  margin: auto;
+}
+
 .Table {
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
-  margin: 40px auto;
+  margin-top: 40px;
   /* padding: 15px; */
+}
+
+.FormGroup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+input {
+  width: 300px;
+  outline: none;
+  border: none;
+  background-color: rgb(236, 236, 236);
+  padding: 10px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 2rem;
 }
 
 th {

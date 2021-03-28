@@ -10,6 +10,7 @@ const Map = ({ data, center, zoom }) => {
   const spots = data.map((spot) => {
     return (
       <SpotMarker
+        key={spot.id}
         lat={spot.lat}
         lng={spot.long}
         onClick={() => {
