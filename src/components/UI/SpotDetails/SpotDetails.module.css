@@ -1,0 +1,56 @@
+.SpotDetails {
+  position: absolute;
+  padding: 15px 15px 0 15px;
+  width: 200px;
+  background-color: #eeeeee;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  top: 70px;
+  right: 70px;
+}
+
+.SpotDetails p {
+  font-size: 0.8rem;
+}
+
+p {
+  margin: 0;
+}
+
+p:last-of-type {
+  margin-bottom: 15px;
+}
+
+.SpotDetails h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.Title {
+  color: rgb(139, 138, 138);
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+.AddToFav {
+  background-color: rgb(241, 206, 3);
+  width: 100%;
+  height: 32px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  right: 0;
+  position: absolute;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.CloseDetails {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  color: rgb(139, 138, 138);
+  font-weight: 500;
+}

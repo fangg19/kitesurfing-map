@@ -17,8 +17,8 @@ const Map = ({ data, center, zoom }) => {
             name: spot.name,
             country: spot.country,
             latitude: spot.lat,
-            longitude: spot.longitude,
-            windProbability: spot.probability,
+            longitude: spot.long,
+            wind: spot.probability,
             month: spot.month,
           });
         }}
@@ -26,6 +26,9 @@ const Map = ({ data, center, zoom }) => {
     );
   });
 
+  const closeSpotInfo = () => {
+    setSpotInfo(null);
+  };
   //to fix: spot-urile nu isi pastreaza locatia la zoom-in/zoom-out
 
   return (
@@ -34,10 +37,15 @@ const Map = ({ data, center, zoom }) => {
         bootstrapURLKeys={{ key: 'AIzaSyAQKZVKTw65FKtxdi-cNFd8D4GjWxD0A8o' }}
         defaultCenter={center}
         defaultZoom={zoom}
+        // onClick={() => {
+        //   setSpotInfo(null);
+        // }}
       >
         {spots}
       </GoogleMapReact>
-      {spotInfo && <SpotDetails details={spotInfo} />}
+      {spotInfo && (
+        <SpotDetails details={spotInfo} closeDetails={closeSpotInfo} />
+      )}
     </div>
   );
 };
