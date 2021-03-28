@@ -6,6 +6,7 @@ import Map from '../Map/Map';
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,12 +18,19 @@ const Dashboard = () => {
     }
 
     fetchData();
+    setLoading(false);
   }, []);
 
   return (
     <div className={classes.Dashboard}>
       <Navbar />
-      <Map data={data} />
+      {loading ? (
+        <p className={classes.Loading}>
+          Please wait while we're getting your map...
+        </p>
+      ) : (
+        <Map data={data} />
+      )}
     </div>
   );
 };
