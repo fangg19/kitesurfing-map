@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import classes from './SpotDetails.module.css';
 
 const SpotDetials = ({ details, closeDetails }) => {
+  const addToFavHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        'https://605ce5a96d85de00170db441.mockapi.io/favourites ',
+        details.id
+      )
+      .then((response) => {
+        console.log(response);
+      });
+  };
   return (
     <div className={classes.SpotDetails}>
       <span onClick={closeDetails} className={classes.CloseDetails}>
@@ -18,7 +30,9 @@ const SpotDetials = ({ details, closeDetails }) => {
       <p className={classes.Title}>WHEN TO GO</p>
       <p>{details.month}</p>
 
-      <button className={classes.AddToFav}>+ ADD TO FAVOURTIES</button>
+      <button className={classes.AddToFav} onClick={addToFavHandler}>
+        + ADD TO FAVOURTIES
+      </button>
     </div>
   );
 };

@@ -9,13 +9,14 @@ const Login = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post('https://605ce5a96d85de00170db441.mockapi.io/spot', {
+      .post('https://605ce5a96d85de00170db441.mockapi.io/login', {
         username,
         password,
       })
       .then((response) => {
         console.log(response);
-      });
+      })
+      .then(history.push('/dashboard'));
   };
   return (
     <div className={classes.Login}>
