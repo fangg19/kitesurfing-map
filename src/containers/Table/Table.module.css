@@ -31,7 +31,7 @@ tr:nth-child(even) {
   width: 80vw;
 }
 
-input {
+.FormControl input {
   width: 300px;
   outline: none;
   border: none;
@@ -39,7 +39,7 @@ input {
   padding: 10px;
 }
 
-label {
+.FormControl label {
   font-weight: 500;
   font-size: 2rem;
 }
