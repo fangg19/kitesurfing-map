@@ -27,7 +27,7 @@ const Dashboard = () => {
       <Navbar />
       {loading ? (
         <p className={classes.Loading}>
-          Please wait while we're getting your map...
+          Please wait while we're getting your info...
         </p>
       ) : (
         <Map data={data} />

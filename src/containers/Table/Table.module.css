@@ -1,8 +1,4 @@
 .Container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
   width: 80vw;
   margin: auto;
 }
@@ -12,25 +8,6 @@
   border-collapse: collapse;
   margin-top: 40px;
   /* padding: 15px; */
-}
-
-.FormGroup {
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-}
-
-input {
-  width: 300px;
-  outline: none;
-  border: none;
-  background-color: rgb(236, 236, 236);
-  padding: 10px;
-}
-
-label {
-  font-weight: 500;
-  font-size: 2rem;
 }
 
 th {
@@ -45,4 +22,24 @@ td {
 
 tr:nth-child(even) {
   background-color: rgb(236, 236, 236);
+}
+
+.FormControl {
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto;
+  width: 80vw;
+}
+
+input {
+  width: 300px;
+  outline: none;
+  border: none;
+  background-color: rgb(236, 236, 236);
+  padding: 10px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 2rem;
 }
