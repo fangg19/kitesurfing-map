@@ -1,26 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { DataContext } from '../../contexts/DataContext';
 import classes from './Dashboard.module.css';
 import Navbar from '../../components/Navbar';
 import Map from '../Map/Map';
 import Table from '../Table/Table';
 
 const Dashboard = () => {
-  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { spots, setSpots, favs, setFavs, setFavInfo } = useContext(
+    DataContext
+  );
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(
+      const spotRes = await axios.get(
         'https://605ce5a96d85de00170db441.mockapi.io/spot'
       );
-      console.log(response.data);
-      setData(response.data);
-    }
+      console.log(spotRes.data);
+      setSpots(spotRes.data);
 
+      const favRes = await axios.get(
+        'https://605ce5a96d85de00170db441.mockapi.io/favourites'
+      );
+      console.log(favRes.data);
+      setFavs(favRes.data);
+    }
     fetchData();
     setLoading(false);
-  }, []);
+  }, [setFavs, setSpots]);
 
   return (
     <div className={classes.Dashboard}>
@@ -30,9 +38,11 @@ const Dashboard = () => {
           Please wait while we're getting your info...
         </p>
       ) : (
-        <Map data={data} />
+        <React.Fragment>
+          <Map />
+          <Table />
+        </React.Fragment>
       )}
-      <Table data={data} />
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import classes from './Login.module.css';
 
 const Login = ({ history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const { user, setUser } = useContext(UserContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -14,7 +16,8 @@ const Login = ({ history }) => {
         password,
       })
       .then((response) => {
-        console.log(response);
+        setUser(response.data);
+        console.log('logging from Login', user);
       })
       .then(history.push('/dashboard'));
   };

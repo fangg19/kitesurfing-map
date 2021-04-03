@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { DataContext } from '../../contexts/DataContext';
 import classes from './Table.module.css';
 
-const Table = ({ data }) => {
+const Table = () => {
   const [searchData, setSearchData] = useState('');
-  const tableInfo = data
+
+  const { spots } = useContext(DataContext);
+  const tableInfo = spots
     .filter((spot) => {
       if (searchData === '') {
         return spot;
