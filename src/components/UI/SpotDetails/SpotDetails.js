@@ -4,15 +4,14 @@ import classes from './SpotDetails.module.css';
 import { DataContext } from '../../../contexts/DataContext';
 
 const SpotDetials = ({ closeDetails }) => {
-  const { spotInfo, favs } = useContext(DataContext);
+  const { spotInfo, favs, setSpotInfo } = useContext(DataContext);
 
   console.log(spotInfo);
+
   let favId;
-  let favSpot;
   favs.forEach((fav) => {
     if (fav.spot === Number(spotInfo.id)) {
       favId = fav.id;
-      favSpot = fav.spot;
     }
   });
 
@@ -20,12 +19,14 @@ const SpotDetials = ({ closeDetails }) => {
     axios.post('https://605ce5a96d85de00170db441.mockapi.io/favourites', {
       spot: Number(spotInfo.id),
     });
+    setSpotInfo({ ...spotInfo, favourite: true });
   };
 
   const removeFavHandler = () => {
     axios.delete(
       `https://605ce5a96d85de00170db441.mockapi.io/favourites/${favId}`
     );
+    setSpotInfo({ ...spotInfo, favourite: false });
   };
 
   return (
@@ -43,8 +44,7 @@ const SpotDetials = ({ closeDetails }) => {
       <p>{spotInfo.longitude}&#176; W</p>
       <p className={classes.Title}>WHEN TO GO</p>
       <p>{spotInfo.month}</p>
-
-      {Number(spotInfo.id) === favSpot ? (
+      {spotInfo.favourite ? (
         <button className={classes.RemoveFav} onClick={removeFavHandler}>
           - REMOVE FROM FAVOURITES
         </button>
@@ -53,6 +53,7 @@ const SpotDetials = ({ closeDetails }) => {
           + ADD TO FAVOURTIES
         </button>
       )}
+      ;
     </div>
   );
 };

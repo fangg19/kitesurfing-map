@@ -15,7 +15,6 @@ function App() {
   const [favs, setFavs] = useState([]);
   const [favInfo, setFavInfo] = useState({});
 
-  const [isOnFav, setIsOnFav] = useState(false);
   const providerValue = useMemo(
     () => ({
       user,
@@ -28,21 +27,8 @@ function App() {
       setFavs,
       favInfo,
       setFavInfo,
-      isOnFav,
-      setIsOnFav,
     }),
-    [
-      user,
-      setUser,
-      spots,
-      setSpots,
-      favs,
-      setFavs,
-      spotInfo,
-      setSpotInfo,
-      isOnFav,
-      setIsOnFav,
-    ]
+    [user, setUser, spots, setSpots, favs, setFavs, spotInfo, setSpotInfo]
   );
 
   return (
