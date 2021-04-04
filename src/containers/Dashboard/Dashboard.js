@@ -8,7 +8,7 @@ import Table from '../Table/Table';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
-  const { spots, setSpots, favs, setFavs } = useContext(DataContext);
+  const { setSpots, setFavs, spotInfo } = useContext(DataContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -26,7 +26,7 @@ const Dashboard = () => {
     }
     fetchData();
     setLoading(false);
-  }, [setFavs, setSpots]);
+  }, [spotInfo, setFavs, setSpots]);
 
   return (
     <div className={classes.Dashboard}>

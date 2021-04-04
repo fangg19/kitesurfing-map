@@ -73,6 +73,9 @@ const Map = ({ center, zoom }) => {
         bootstrapURLKeys={{ key: 'AIzaSyAQKZVKTw65FKtxdi-cNFd8D4GjWxD0A8o' }}
         defaultCenter={center}
         defaultZoom={zoom}
+        onClick={() => {
+          setSpotInfo(null);
+        }}
       >
         {spotMarker}
       </GoogleMapReact>

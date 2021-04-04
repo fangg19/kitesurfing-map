@@ -6,8 +6,6 @@ import { DataContext } from '../../../contexts/DataContext';
 const SpotDetials = ({ closeDetails }) => {
   const { spotInfo, favs, setSpotInfo } = useContext(DataContext);
 
-  console.log(spotInfo);
-
   let favId;
   favs.forEach((fav) => {
     if (fav.spot === Number(spotInfo.id)) {
@@ -16,15 +14,36 @@ const SpotDetials = ({ closeDetails }) => {
   });
 
   const addFavHandler = () => {
-    axios.post('https://605ce5a96d85de00170db441.mockapi.io/favourites', {
-      spot: Number(spotInfo.id),
-    });
-    setSpotInfo({ ...spotInfo, favourite: true });
+    try {
+      axios
+        .post('https://605ce5a96d85de00170db441.mockapi.io/favourites', {
+          spot: Number(spotInfo.id),
+        })
+        .then((response) => {
+          console.log(response);
+        });
+
+      axios.put(
+        `https://605ce5a96d85de00170db441.mockapi.io/spot/${spotInfo.id}`,
+        {
+          favourite: true,
+        }
+      );
+      setSpotInfo({ ...spotInfo, favourite: true });
+    } catch {}
   };
 
   const removeFavHandler = () => {
-    axios.delete(
-      `https://605ce5a96d85de00170db441.mockapi.io/favourites/${favId}`
+    axios
+      .delete(`https://605ce5a96d85de00170db441.mockapi.io/favourites/${favId}`)
+      .then((response) => {
+        console.log(response);
+      });
+    axios.put(
+      `https://605ce5a96d85de00170db441.mockapi.io/spot/${spotInfo.id}`,
+      {
+        favourite: false,
+      }
     );
     setSpotInfo({ ...spotInfo, favourite: false });
   };

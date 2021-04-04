@@ -18,9 +18,14 @@ const Login = ({ history }) => {
       .then((response) => {
         setUser(response.data);
         console.log('logging from Login', user);
-      })
-      .then(history.push('/dashboard'));
+      });
   };
+
+  // doar daca sunt logat
+  if (user) {
+    history.push('/dashboard');
+  }
+
   return (
     <div className={classes.Login}>
       <h1>Kite</h1>
