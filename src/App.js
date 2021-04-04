@@ -13,7 +13,7 @@ function App() {
   const [spotInfo, setSpotInfo] = useState(null);
 
   const [favs, setFavs] = useState([]);
-  const [favInfo, setFavInfo] = useState({});
+  const [favInfo, setFavInfo] = useState(false);
 
   const providerValue = useMemo(
     () => ({

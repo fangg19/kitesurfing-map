@@ -28,6 +28,8 @@ const Dashboard = () => {
     setLoading(false);
   }, [spotInfo, setFavs, setSpots]);
 
+  //dont fetch all the data again on state update !!
+
   return (
     <div className={classes.Dashboard}>
       <Navbar />

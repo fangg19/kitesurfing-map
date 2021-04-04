@@ -4,7 +4,7 @@ import classes from './SpotDetails.module.css';
 import { DataContext } from '../../../contexts/DataContext';
 
 const SpotDetials = ({ closeDetails }) => {
-  const { spotInfo, favs, setSpotInfo } = useContext(DataContext);
+  const { spotInfo, favs, setSpotInfo, setFavInfo } = useContext(DataContext);
 
   let favId;
   favs.forEach((fav) => {
@@ -13,39 +13,39 @@ const SpotDetials = ({ closeDetails }) => {
     }
   });
 
-  const addFavHandler = () => {
+  const addFavHandler = (id) => {
+    setSpotInfo({ ...spotInfo, favourite: true });
+    setFavInfo(true);
     try {
-      axios
-        .post('https://605ce5a96d85de00170db441.mockapi.io/favourites', {
-          spot: Number(spotInfo.id),
-        })
-        .then((response) => {
-          console.log(response);
-        });
+      axios.put(`https://605ce5a96d85de00170db441.mockapi.io/spot/${id}`, {
+        favourite: true,
+      });
+      axios.post('https://605ce5a96d85de00170db441.mockapi.io/favourites', {
+        spot: Number(id),
+      });
+    } catch (err) {
+      if (err.response.status === 429) {
+        alert('Oops. Please try again.');
+      }
+    }
+  };
 
+  const removeFavHandler = (id) => {
+    setSpotInfo({ ...spotInfo, favourite: false });
+    setFavInfo(false);
+    try {
+      axios.delete(
+        `https://605ce5a96d85de00170db441.mockapi.io/favourites/${id}`
+      );
       axios.put(
         `https://605ce5a96d85de00170db441.mockapi.io/spot/${spotInfo.id}`,
         {
-          favourite: true,
+          favourite: false,
         }
       );
-      setSpotInfo({ ...spotInfo, favourite: true });
-    } catch {}
-  };
-
-  const removeFavHandler = () => {
-    axios
-      .delete(`https://605ce5a96d85de00170db441.mockapi.io/favourites/${favId}`)
-      .then((response) => {
-        console.log(response);
-      });
-    axios.put(
-      `https://605ce5a96d85de00170db441.mockapi.io/spot/${spotInfo.id}`,
-      {
-        favourite: false,
-      }
-    );
-    setSpotInfo({ ...spotInfo, favourite: false });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -64,11 +64,21 @@ const SpotDetials = ({ closeDetails }) => {
       <p className={classes.Title}>WHEN TO GO</p>
       <p>{spotInfo.month}</p>
       {spotInfo.favourite ? (
-        <button className={classes.RemoveFav} onClick={removeFavHandler}>
+        <button
+          className={classes.RemoveFav}
+          onClick={() => {
+            removeFavHandler(favId);
+          }}
+        >
           - REMOVE FROM FAVOURITES
         </button>
       ) : (
-        <button className={classes.AddFav} onClick={addFavHandler}>
+        <button
+          className={classes.AddFav}
+          onClick={() => {
+            addFavHandler(spotInfo.id);
+          }}
+        >
           + ADD TO FAVOURTIES
         </button>
       )}

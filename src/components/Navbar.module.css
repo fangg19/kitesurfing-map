@@ -10,3 +10,18 @@
 img {
   width: 32px;
 }
+
+.Logout {
+  position: absolute;
+  top: 55px;
+  right: 7px;
+  z-index: 100;
+}
+
+.LogoutBtn {
+  background-color: rgb(211, 211, 211);
+  color: rgb(253, 44, 79);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

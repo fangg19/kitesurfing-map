@@ -17,14 +17,18 @@ const Login = ({ history }) => {
       })
       .then((response) => {
         setUser(response.data);
-        console.log('logging from Login', user);
-      });
+      })
+      .then(proceed());
   };
 
   // doar daca sunt logat
-  if (user) {
-    history.push('/dashboard');
-  }
+  const proceed = () => {
+    if (user) {
+      history.push('/dashboard');
+    } else {
+      alert('Please login to proceed.');
+    }
+  };
 
   return (
     <div className={classes.Login}>
