@@ -1,15 +1,11 @@
 import React, { useContext, useState } from 'react';
 import classes from './Navbar.module.css';
 import UserIcon from '../assets/profile-user.png';
-import { UserContext } from '../contexts/UserContext';
+import { withRouter } from 'react-router';
+import Logout from '../containers/Loginout/Logout';
 
-const Navbar = ({ history }) => {
+const Navbar = () => {
   const [clickToLogout, setClickToLogout] = useState(false);
-  const { setUser } = useContext(UserContext);
-
-  const logoutHandler = () => {
-    history.goBack();
-  };
 
   return (
     <header className={classes.Navbar}>
@@ -21,15 +17,9 @@ const Navbar = ({ history }) => {
           setClickToLogout(!clickToLogout);
         }}
       />
-      {clickToLogout ? (
-        <div className={classes.Logout}>
-          <button className={classes.LogoutBtn} onClick={logoutHandler}>
-            Logout
-          </button>
-        </div>
-      ) : null}
+      {clickToLogout ? <Logout /> : null}
     </header>
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);

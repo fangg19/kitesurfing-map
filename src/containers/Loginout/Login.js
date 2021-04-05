@@ -8,26 +8,22 @@ const Login = ({ history }) => {
   const [password, setPassword] = useState('');
   const { user, setUser } = useContext(UserContext);
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    axios
+    await axios
       .post('https://605ce5a96d85de00170db441.mockapi.io/login', {
-        username,
-        password,
+        username: username,
+        password: password,
       })
       .then((response) => {
-        setUser(response.data);
-      })
-      .then(proceed());
-  };
-
-  // doar daca sunt logat
-  const proceed = () => {
-    if (user) {
-      history.push('/dashboard');
-    } else {
-      alert('Please login to proceed.');
-    }
+        if (response.data.username && response.data.password) {
+          setUser(response.data);
+          history.push('/dashboard');
+        } else {
+          alert('Oops. Please login to proceed');
+        }
+        console.log(user);
+      });
   };
 
   return (
