@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import classes from './Map.module.css';
 import GoogleMapReact from 'google-map-react';
 import SpotMarkerGold from '../../components/UI/SpotMarker/SpotMarkerGold';
@@ -7,9 +7,7 @@ import SpotDetails from '../../components/UI/SpotDetails/SpotDetails';
 import { DataContext } from '../../contexts/DataContext';
 
 const Map = ({ center, zoom }) => {
-  const { spots, spotInfo, setSpotInfo, favInfo, setFavInfo } = useContext(
-    DataContext
-  );
+  const { spots, spotInfo, setSpotInfo, setFavInfo } = useContext(DataContext);
 
   const closeSpotInfo = () => {
     setSpotInfo(null);
@@ -22,7 +20,6 @@ const Map = ({ center, zoom }) => {
   //     }
   //   }
   // }
-  let isOnFav;
 
   spots.forEach((singleSpot) => {
     setFavInfo(singleSpot.favourite);

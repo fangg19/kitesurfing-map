@@ -46,7 +46,7 @@ input[type='submit'] {
   outline: none;
   cursor: pointer;
   margin: 50px auto;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 

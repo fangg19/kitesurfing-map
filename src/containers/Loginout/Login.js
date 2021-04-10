@@ -6,8 +6,9 @@ import classes from './Login.module.css';
 const Login = ({ history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-  const { user, setUser } = useContext(UserContext);
+  const [invalidCredentials, setInvalidCredentials] = useState(false);
+  const [serverError, setServerError] = useState(false);
+  const { setUser } = useContext(UserContext);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -21,22 +22,34 @@ const Login = ({ history }) => {
           setUser(response.data);
           history.push('/dashboard');
         } else {
-          setError(true);
+          setInvalidCredentials(true);
         }
-        console.log(user);
+      })
+      .catch((error) => {
+        setServerError(true);
       });
   };
 
   return (
     <div className={classes.Login}>
-      {error ? (
+      {serverError ? (
         <h3
           className={classes.Error}
           onClick={() => {
-            setError(false);
+            setServerError(false);
           }}
         >
-          Oops.. Invalid username/password.
+          We have a server problem. Please try again.
+        </h3>
+      ) : null}
+      {invalidCredentials ? (
+        <h3
+          className={classes.Error}
+          onClick={() => {
+            setInvalidCredentials(false);
+          }}
+        >
+          Oops.. Invalid credentials.
         </h3>
       ) : null}
       <h1>Kite</h1>

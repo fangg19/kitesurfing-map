@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import classes from './Navbar.module.css';
 import UserIcon from '../assets/profile-user.png';
 import { withRouter } from 'react-router';

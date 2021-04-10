@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
-import { DataContext } from '../../../contexts/DataContext';
+import React from 'react';
 import classes from './SpotMarker.module.css';
 import { Icon } from '@iconify/react';
 import spotIcon from '@iconify-icons/mdi/map-marker';
 
 const SpotMarkerGold = ({ onClick, fav }) => {
-  const { favInfo } = useContext(DataContext);
-
   return (
     <div className={classes.SpotMarker}>
       {fav ? (

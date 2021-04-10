@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { DataContext } from '../../../contexts/DataContext';
+import React from 'react';
 import classes from './SpotMarker.module.css';
 import { Icon } from '@iconify/react';
 import spotIcon from '@iconify-icons/mdi/map-marker';

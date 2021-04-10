@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import classes from './Logout.module.css';
 import { UserContext } from '../../contexts/UserContext';
 import { withRouter } from 'react-router';
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import logout from '@iconify-icons/mdi/logout-variant';
 
 const Logout = ({ history }) => {
