@@ -22,7 +22,14 @@ const Map = ({ center, zoom }) => {
   //     }
   //   }
   // }
+  let isOnFav;
 
+  spots.forEach((singleSpot) => {
+    setFavInfo(singleSpot.favourite);
+    // setFavInfo(isOnFav);
+  });
+
+  // o singura componenta de spotMarker cu state bazat pe altceva in afara de proprietatea spot-ului ?!!?!?!
   const spotMarker = spots.map((spot) => {
     if (spot.favourite) {
       return (

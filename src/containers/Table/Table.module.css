@@ -4,16 +4,22 @@
 }
 
 .Table {
-  width: 100%;
-  border-collapse: collapse;
   margin-top: 40px;
   /* padding: 15px; */
+}
+
+.Table table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 th {
   background-color: rgb(214, 214, 214);
   text-align: left;
   padding: 5px;
+  top: 0;
+  z-index: 2;
+  position: sticky;
 }
 
 td {
@@ -42,4 +48,22 @@ tr:nth-child(even) {
 .FormControl label {
   font-weight: 500;
   font-size: 2rem;
+}
+
+.SortSymbol {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .Container {
+    width: 100vw;
+    margin: auto;
+  }
+  .Table {
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    margin: auto;
+    font-size: 12px;
+  }
 }

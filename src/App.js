@@ -13,7 +13,7 @@ function App() {
   const [spotInfo, setSpotInfo] = useState(null);
 
   const [favs, setFavs] = useState([]);
-  const [favInfo, setFavInfo] = useState(false);
+  const [favInfo, setFavInfo] = useState();
 
   const providerValue = useMemo(
     () => ({
@@ -28,7 +28,17 @@ function App() {
       favInfo,
       setFavInfo,
     }),
-    [user, setUser, spots, setSpots, favs, setFavs, spotInfo, setSpotInfo]
+    [
+      user,
+      setUser,
+      spots,
+      setSpots,
+      favs,
+      setFavs,
+      spotInfo,
+      setSpotInfo,
+      favInfo,
+    ]
   );
 
   return (

@@ -4,19 +4,31 @@ import classes from './Table.module.css';
 
 const Table = () => {
   const [searchData, setSearchData] = useState('');
+  // let noValue;
+  const { spots, setSpots } = useContext(DataContext);
 
-  const { spots } = useContext(DataContext);
+  // const sortHandler = (key) => {
+  //   console.log(spots);
+  //   setSpots(
+  //     spots.sort((a, b) => {
+  //       console.log(a[key] - b[key]);
+  //       return a[key] - b[key];
+  //     })
+  //   );
+  // };
+
   const tableInfo = spots
     .filter((spot) => {
       if (searchData === '') {
         return spot;
       } else if (
         // componenta individuala de search ??
-        spot.name.toLowerCase().includes(searchData.toLocaleLowerCase()) ||
-        spot.country.toLowerCase().includes(searchData.toLocaleLowerCase()) ||
-        spot.probability.toString().includes(searchData.toLocaleLowerCase()) ||
-        spot.month.toLowerCase().includes(searchData.toLocaleLowerCase())
+        spot.name.toLowerCase().includes(searchData.toLowerCase()) ||
+        spot.country.toLowerCase().includes(searchData.toLowerCase()) ||
+        spot.probability.toString().includes(searchData.toLowerCase()) ||
+        spot.month.toLowerCase().includes(searchData.toLowerCase())
       ) {
+        // noValue = false;
         return spot;
       }
     })
@@ -25,8 +37,8 @@ const Table = () => {
         <tr key={spot.id}>
           <td>{spot.name}</td>
           <td>{spot.country}</td>
-          <td>{spot.lat}&#176; N</td>
-          <td>{spot.long}&#176; W</td>
+          <td>{spot.lat}&#176;N</td>
+          <td>{spot.long}&#176;W</td>
           <td>{spot.probability}%</td>
           <td>{spot.month}</td>
         </tr>
@@ -40,25 +52,40 @@ const Table = () => {
         <input
           type="text"
           name="search"
-          placeholder="Search..."
+          placeholder="Search.."
           onChange={(e) => {
             setSearchData(e.target.value);
           }}
         />
       </div>
-      <table className={classes.Table}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Country</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Wind prob.</th>
-            <th>When to go</th>
-          </tr>
-        </thead>
-        <tbody>{tableInfo}</tbody>
-      </table>
+      {/* {noValue ? (
+        <p>Oops! No info found. Please try another location.</p>
+      ) : null} */}
+      <div className={classes.Table}>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Name
+                {/* <span
+                className={classes.SortSymbol}
+                onClick={() => {
+                  sortHandler('name');
+                }}
+              >
+                &#8645;
+              </span> */}
+              </th>
+              <th>Country</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Wind prob.</th>
+              <th>When to go</th>
+            </tr>
+          </thead>
+          <tbody>{tableInfo}</tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import classes from './Login.module.css';
 const Login = ({ history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
   const { user, setUser } = useContext(UserContext);
 
   const submitHandler = async (e) => {
@@ -20,7 +21,7 @@ const Login = ({ history }) => {
           setUser(response.data);
           history.push('/dashboard');
         } else {
-          alert('Oops. Please login to proceed');
+          setError(true);
         }
         console.log(user);
       });
@@ -28,7 +29,18 @@ const Login = ({ history }) => {
 
   return (
     <div className={classes.Login}>
+      {error ? (
+        <h3
+          className={classes.Error}
+          onClick={() => {
+            setError(false);
+          }}
+        >
+          Oops.. Invalid username/password.
+        </h3>
+      ) : null}
       <h1>Kite</h1>
+
       <form onSubmit={submitHandler}>
         <div className={classes.FormControl}>
           <label htmlFor="username">Username: </label>
