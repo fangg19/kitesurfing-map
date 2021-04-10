@@ -1,0 +1,54 @@
+form {
+  position: absolute;
+  z-index: 201;
+  top: 40px;
+  right: 0px;
+  width: 200px;
+  background-color: rgb(247, 248, 248);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.FormControl {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 80%;
+}
+
+.FormControl input {
+  background-color: rgb(247, 248, 248);
+  padding: 2px 4px;
+
+  border: none;
+  border-bottom: 2px solid rgb(165, 165, 165);
+  outline: none;
+}
+
+.FormControl input:focus {
+  border-bottom: 2px solid rgb(6, 114, 216);
+}
+
+.FormControl label {
+  margin-top: 5px;
+  font-size: 12px;
+  color: rgb(139, 138, 138);
+  font-weight: 500;
+}
+
+input[type='submit'] {
+  background-color: rgb(250, 246, 246);
+  margin: 15px;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}

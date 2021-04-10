@@ -5,6 +5,7 @@ import classes from './Dashboard.module.css';
 import Navbar from '../../components/Navbar';
 import Map from '../Map/Map';
 import Table from '../Table/Table';
+import Filter from '../Filter/FilterBtn';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -39,6 +40,7 @@ const Dashboard = () => {
         </p>
       ) : (
         <React.Fragment>
+          <Filter />
           <Map />
           <Table />
         </React.Fragment>
