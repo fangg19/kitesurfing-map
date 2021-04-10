@@ -7,26 +7,32 @@ import SpotDetails from '../../components/UI/SpotDetails/SpotDetails';
 import { DataContext } from '../../contexts/DataContext';
 
 const Map = ({ center, zoom }) => {
-  const { spots, spotInfo, setSpotInfo, setFavInfo } = useContext(DataContext);
+  const {
+    spots,
+    filteredSpots,
+    spotInfo,
+    setSpotInfo,
+    setFavInfo,
+    wind,
+    country,
+  } = useContext(DataContext);
 
   const closeSpotInfo = () => {
     setSpotInfo(null);
   };
 
-  // for (let spot of spots) {
-  //   for (let fav of favs) {
-  //     if (spot.id === fav.id) {
-  //       console.log(`${spot.name} is on favourites. => ${spot.id} & ${fav.id}`);
-  //     }
-  //   }
-  // }
-
   spots.forEach((singleSpot) => {
     setFavInfo(singleSpot.favourite);
-    // setFavInfo(isOnFav);
   });
+  // let spotsToMap;
+  // if (wind === '' && country === '') {
+  //   spotsToMap = spots;
+  // } else {
+  //   spotsToMap = filteredSpots;
+  // }
 
-  // o singura componenta de spotMarker cu state bazat pe altceva in afara de proprietatea spot-ului ?!!?!?!
+  // o singura componenta de spotMarker cu state bazat pe altceva in afara de proprietatea spot-ului ??
+
   const spotMarker = spots.map((spot) => {
     if (spot.favourite) {
       return (

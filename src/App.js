@@ -15,6 +15,11 @@ function App() {
   const [favs, setFavs] = useState([]);
   const [favInfo, setFavInfo] = useState();
 
+  const [country, setCountry] = useState('');
+  const [wind, setWind] = useState('');
+
+  const [filteredSpots, setFilteredSpots] = useState([]);
+
   const providerValue = useMemo(
     () => ({
       user,
@@ -27,6 +32,12 @@ function App() {
       setFavs,
       favInfo,
       setFavInfo,
+      country,
+      setCountry,
+      wind,
+      setWind,
+      filteredSpots,
+      setFilteredSpots,
     }),
     [
       user,
@@ -38,6 +49,12 @@ function App() {
       spotInfo,
       setSpotInfo,
       favInfo,
+      country,
+      setCountry,
+      wind,
+      setWind,
+      filteredSpots,
+      setFilteredSpots,
     ]
   );
 

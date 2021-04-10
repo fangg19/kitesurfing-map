@@ -5,11 +5,13 @@ import classes from './Dashboard.module.css';
 import Navbar from '../../components/Navbar';
 import Map from '../Map/Map';
 import Table from '../Table/Table';
-import Filter from '../Filter/FilterBtn';
+import FilterBtn from '../Filter/FilterBtn';
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
-  const { setSpots, setFavs, spotInfo } = useContext(DataContext);
+  const { setSpots, setFavs, spotInfo, setFilteredSpots } = useContext(
+    DataContext
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -27,7 +29,7 @@ const Dashboard = () => {
     }
     fetchData();
     setLoading(false);
-  }, [spotInfo, setFavs, setSpots]);
+  }, [spotInfo, setFavs, setSpots, setFilteredSpots]);
 
   //dont fetch all the data again on state update !!
 
@@ -40,7 +42,7 @@ const Dashboard = () => {
         </p>
       ) : (
         <React.Fragment>
-          <Filter />
+          <FilterBtn />
           <Map />
           <Table />
         </React.Fragment>

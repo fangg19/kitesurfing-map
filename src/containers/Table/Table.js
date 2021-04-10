@@ -5,7 +5,7 @@ import classes from './Table.module.css';
 const Table = () => {
   const [searchData, setSearchData] = useState('');
   // let noValue;
-  const { spots } = useContext(DataContext);
+  const { spots, filteredSpots } = useContext(DataContext);
 
   // const sortHandler = (key) => {
   //   console.log(spots);
