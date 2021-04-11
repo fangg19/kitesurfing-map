@@ -37,8 +37,8 @@ const Table = () => {
         <tr key={spot.id}>
           <td>{spot.name}</td>
           <td>{spot.country}</td>
-          <td>{spot.lat}&#176;N</td>
-          <td>{spot.long}&#176;W</td>
+          <td>{Number(spot.lat).toFixed(2)}&#176;N</td>
+          <td>{Number(spot.long).toFixed(2)}&#176;W</td>
           <td>{spot.probability}%</td>
           <td>{spot.month}</td>
         </tr>

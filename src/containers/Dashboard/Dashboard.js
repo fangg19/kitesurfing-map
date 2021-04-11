@@ -14,7 +14,6 @@ const Dashboard = () => {
     setErrorMessage,
     setSpots,
     setFavs,
-    spotInfo,
     setFilteredSpots,
   } = useContext(DataContext);
 
@@ -44,7 +43,7 @@ const Dashboard = () => {
     }
     fetchData();
     setLoading(false);
-  }, [spotInfo, setFavs, setSpots, setFilteredSpots, setErrorMessage]);
+  }, [setFavs, setSpots, setFilteredSpots, setErrorMessage]);
 
   //dont fetch all the data again on state update !!
 
