@@ -2,11 +2,13 @@ import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { UserContext } from './contexts/UserContext';
 import { DataContext } from './contexts/DataContext';
-import Login from './containers/Loginout/Login';
+import Login from './containers/LogInOut/Login';
 import Dashboard from './containers/Dashboard/Dashboard';
 import { useMemo, useState } from 'react';
 
 function App() {
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const [user, setUser] = useState(null);
 
   const [spots, setSpots] = useState([]);
@@ -38,6 +40,8 @@ function App() {
       setWind,
       filteredSpots,
       setFilteredSpots,
+      errorMessage,
+      setErrorMessage,
     }),
     [
       user,
@@ -55,6 +59,8 @@ function App() {
       setWind,
       filteredSpots,
       setFilteredSpots,
+      errorMessage,
+      setErrorMessage,
     ]
   );
 

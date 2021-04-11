@@ -7,11 +7,11 @@ const Filter = () => {
   const {
     spots,
     setSpots,
-    setFilteredSpots,
     country,
     wind,
     setCountry,
     setWind,
+    setErrorMessage,
   } = useContext(DataContext);
 
   const submitHandler = (e) => {
@@ -21,7 +21,7 @@ const Filter = () => {
         return spot;
       } else if (
         spot.country.toLowerCase().includes(country.toLowerCase()) &&
-        spot.probability.toString().includes(wind.toString())
+        spot.probability.toString().includes(wind.toLowerCase())
       ) {
         return spot;
       }
@@ -29,12 +29,20 @@ const Filter = () => {
     setSpots(filtered);
   };
 
+  //reset inputs and refetch spots
   const resetHandler = (e) => {
-    console.log('RESET');
+    e.preventDefault();
+    setCountry('');
+    setWind('');
     axios
       .get('https://605ce5a96d85de00170db441.mockapi.io/spot')
       .then((response) => {
         setSpots(response.data);
+      })
+      .catch((error) => {
+        setErrorMessage(
+          `We're having a ${error.response.status} '${error.response.data}' error. Please try again.`
+        );
       });
   };
 

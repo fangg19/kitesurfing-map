@@ -7,8 +7,8 @@ const Login = ({ history }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [invalidCredentials, setInvalidCredentials] = useState(false);
-  const [serverError, setServerError] = useState(false);
-  const { setUser } = useContext(UserContext);
+
+  const { setUser, errorMessage, setErrorMessage } = useContext(UserContext);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -26,31 +26,15 @@ const Login = ({ history }) => {
         }
       })
       .catch((error) => {
-        setServerError(true);
+        setErrorMessage(`We're having some trouble. Please refresh the page.`);
       });
   };
 
   return (
     <div className={classes.Login}>
-      {serverError ? (
-        <h3
-          className={classes.Error}
-          onClick={() => {
-            setServerError(false);
-          }}
-        >
-          We have a server problem. Please try again.
-        </h3>
-      ) : null}
+      {errorMessage ? <h3 className={classes.Error}>{errorMessage}</h3> : null}
       {invalidCredentials ? (
-        <h3
-          className={classes.Error}
-          onClick={() => {
-            setInvalidCredentials(false);
-          }}
-        >
-          Oops.. Invalid credentials.
-        </h3>
+        <h3 className={classes.Error}>Oops.. Invalid username/password.</h3>
       ) : null}
       <h1>Kite</h1>
 

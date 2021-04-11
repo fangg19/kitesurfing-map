@@ -1,10 +1,16 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
 import classes from './SpotDetails.module.css';
-import { DataContext } from '../../../contexts/DataContext';
+import { DataContext } from '../../contexts/DataContext';
 
 const SpotDetials = ({ closeDetails }) => {
-  const { spotInfo, favs, setSpotInfo, setFavInfo } = useContext(DataContext);
+  const {
+    spotInfo,
+    favs,
+    setFavInfo,
+    setSpotInfo,
+    setErrorMessage,
+  } = useContext(DataContext);
 
   let favId;
   favs.forEach((fav) => {
@@ -23,29 +29,32 @@ const SpotDetials = ({ closeDetails }) => {
       axios.post('https://605ce5a96d85de00170db441.mockapi.io/favourites', {
         spot: Number(id),
       });
-    } catch (err) {
-      if (err.response.status === 429) {
-        alert('Oops. Please try again.');
-      }
+    } catch (error) {
+      setErrorMessage(
+        `We're having a ${error.response.status} '${error.response.data}' error. Please try again.`
+      );
     }
   };
 
   const removeFavHandler = (id) => {
     setSpotInfo({ ...spotInfo, favourite: false });
     setFavInfo(false);
-    try {
-      axios.delete(
-        `https://605ce5a96d85de00170db441.mockapi.io/favourites/${id}`
-      );
-      axios.put(
-        `https://605ce5a96d85de00170db441.mockapi.io/spot/${spotInfo.id}`,
-        {
-          favourite: false,
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
+    axios
+      .delete(`https://605ce5a96d85de00170db441.mockapi.io/favourites/${id}`)
+      .catch((error) => {
+        setErrorMessage(
+          `We're having a ${error.response.status} '${error.response.data}' error. Please try again.`
+        );
+      });
+    axios
+      .put(`https://605ce5a96d85de00170db441.mockapi.io/spot/${spotInfo.id}`, {
+        favourite: false,
+      })
+      .catch((error) => {
+        setErrorMessage(
+          `We're having a ${error.response.status} '${error.response.data}' error. Please try again.`
+        );
+      });
   };
 
   return (

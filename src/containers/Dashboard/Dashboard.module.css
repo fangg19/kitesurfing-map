@@ -1,4 +1,24 @@
+.Dashboard {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .Loading {
+  margin-top: 100px;
   text-align: center;
   font-size: 1.2rem;
+}
+
+.Error {
+  width: 350px;
+  z-index: 300;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: rgb(243, 29, 40);
+  color: rgb(255, 255, 255);
+  border-radius: 6px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
 }

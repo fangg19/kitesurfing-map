@@ -51,17 +51,9 @@
 }
 
 .Error {
-  /* position: absolute; */
-  /* margin-bottom: 40px; */
   padding: 20px;
   background-color: rgb(243, 29, 40);
   color: rgb(255, 255, 255);
   border-radius: 6px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.Error:hover {
-  transform: scale(1.1);
 }

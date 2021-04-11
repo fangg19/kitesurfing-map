@@ -3,19 +3,11 @@ import classes from './Map.module.css';
 import GoogleMapReact from 'google-map-react';
 import SpotMarkerGold from '../../components/UI/SpotMarker/SpotMarkerGold';
 import SpotMarkerRed from '../../components/UI/SpotMarker/SpotMarkerRed';
-import SpotDetails from '../../components/UI/SpotDetails/SpotDetails';
+import SpotDetails from '../../containers/SpotDetails/SpotDetails';
 import { DataContext } from '../../contexts/DataContext';
 
 const Map = ({ center, zoom }) => {
-  const {
-    spots,
-    filteredSpots,
-    spotInfo,
-    setSpotInfo,
-    setFavInfo,
-    wind,
-    country,
-  } = useContext(DataContext);
+  const { spots, spotInfo, setSpotInfo, setFavInfo } = useContext(DataContext);
 
   const closeSpotInfo = () => {
     setSpotInfo(null);
