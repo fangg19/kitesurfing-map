@@ -1,4 +1,4 @@
-# Kitesurfing Map
+## Kitesurfing Map
 
 This is actually a website developed for an interview on a junior front-end developer role.
 
