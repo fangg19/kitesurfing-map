@@ -34,6 +34,7 @@ const Filter = () => {
     e.preventDefault();
     setCountry('');
     setWind('');
+    // submitHandler(e);
     axios
       .get('https://605ce5a96d85de00170db441.mockapi.io/spot')
       .then((response) => {

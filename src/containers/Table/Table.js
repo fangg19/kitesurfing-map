@@ -4,31 +4,18 @@ import classes from './Table.module.css';
 
 const Table = () => {
   const [searchData, setSearchData] = useState('');
-  // let noValue;
   const { spots } = useContext(DataContext);
-
-  // const sortHandler = (key) => {
-  //   console.log(spots);
-  //   setSpots(
-  //     spots.sort((a, b) => {
-  //       console.log(a[key] - b[key]);
-  //       return a[key] - b[key];
-  //     })
-  //   );
-  // };
 
   const tableInfo = spots
     .filter((spot) => {
       if (searchData === '') {
         return spot;
       } else if (
-        // componenta individuala de search ??
         spot.name.toLowerCase().includes(searchData.toLowerCase()) ||
         spot.country.toLowerCase().includes(searchData.toLowerCase()) ||
         spot.probability.toString().includes(searchData.toLowerCase()) ||
         spot.month.toLowerCase().includes(searchData.toLowerCase())
       ) {
-        // noValue = false;
         return spot;
       }
     })
@@ -37,8 +24,8 @@ const Table = () => {
         <tr key={spot.id}>
           <td>{spot.name}</td>
           <td>{spot.country}</td>
-          <td>{Number(spot.lat).toFixed(2)}&#176;N</td>
-          <td>{Number(spot.long).toFixed(2)}&#176;W</td>
+          <td>{Number(spot.lat).toFixed(2)}&#176; N</td>
+          <td>{Number(spot.long).toFixed(2)}&#176; W</td>
           <td>{spot.probability}%</td>
           <td>{spot.month}</td>
         </tr>
@@ -52,30 +39,17 @@ const Table = () => {
         <input
           type="text"
           name="search"
-          placeholder="Search.."
+          placeholder="Search for any criteria.."
           onChange={(e) => {
             setSearchData(e.target.value);
           }}
         />
       </div>
-      {/* {noValue ? (
-        <p>Oops! No info found. Please try another location.</p>
-      ) : null} */}
       <div className={classes.Table}>
         <table>
           <thead>
             <tr>
-              <th>
-                Name
-                {/* <span
-                className={classes.SortSymbol}
-                onClick={() => {
-                  sortHandler('name');
-                }}
-              >
-                &#8645;
-              </span> */}
-              </th>
+              <th>Name</th>
               <th>Country</th>
               <th>Latitude</th>
               <th>Longitude</th>
