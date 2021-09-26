@@ -13,6 +13,10 @@
   font-family: 'Gabriola';
 }
 
+.Login p {
+  margin-bottom: 50px;
+}
+
 .Login form {
   display: flex;
   flex-direction: column;
@@ -47,6 +51,10 @@
   cursor: pointer;
   margin: 50px auto;
   border-radius: 3px;
+}
+
+.Login input[type='submit']:hover {
+  background-color: rgb(17, 101, 180);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 

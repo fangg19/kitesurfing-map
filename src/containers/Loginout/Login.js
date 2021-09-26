@@ -61,6 +61,7 @@ const Login = ({ history }) => {
         </div>
         <input type="submit" value="Login" />
       </form>
+      <p>For testing porpuses you can enter any username and any password.</p>
     </div>
   );
 };
